@@ -1,0 +1,6 @@
+@aug23ft_bet_ca_1_fadezilla_HostAddress = http://localhost:5259
+
+GET {{aug23ft_bet_ca_1_fadezilla_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
