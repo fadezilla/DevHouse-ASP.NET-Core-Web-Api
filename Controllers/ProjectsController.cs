@@ -16,30 +16,62 @@ namespace devhouse.Controllers
             _dataContext = dataContext;
         }
         
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<Project>>> GetProjects()
+        public class ProjectTool
         {
-            if (_dataContext.Projects == null)
-            {
-                return NotFound();
-            }
-
-            return await _dataContext.Projects.ToListAsync();
+            public int Id { get; set; }
+            public string Name { get; set; }
+            public int ProjectTypeId { get; set; }
+            public int TeamId { get; set; }
+            public string ProjectType { get; set; }
+            public string Team { get; set; }
         }
-
-        [HttpGet("{Id}")]
-        public async Task<ActionResult<Project>> GetProject(int Id)
+        
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<ProjectTool>>> GetProjects()
         {
-            if(_dataContext.Projects == null)
-            {
-                return NotFound();
-            }
-            var project = await _dataContext.Projects.FindAsync(Id);
-            if(project is null)
+           var project = await _dataContext.Projects
+                .Include(p => p.Team)
+                .Include(p => p.ProjectType)
+                .Select(p => new ProjectTool
+                {
+                    Id = p.Id,
+                    Name = p.Name,
+                    ProjectTypeId = p.ProjectTypeId,
+                    ProjectType = p.ProjectType.Name,
+                    TeamId = p.TeamId,
+                    Team = p.Team.Name
+                }).ToListAsync();
+
+            if(project == null)
             {
                 return NotFound();
             }
             return project;
+        }
+
+        [HttpGet("{Id}")]
+        public async Task<ActionResult<ProjectTool>> GetProject(int Id)
+        {
+            var project = await _dataContext.Projects
+                .Where(p => p.Id == Id)
+                .Include(p => p.ProjectType)
+                .Include(p => p.Team)
+                .Select(p => new ProjectTool
+                {
+                    Id = p.Id,
+                    Name = p.Name,
+                    ProjectTypeId = p.ProjectTypeId,
+                    ProjectType = p.ProjectType.Name,
+                    TeamId = p.TeamId,
+                    Team = p.Team.Name
+                }).FirstOrDefaultAsync();
+
+                if(project == null)
+                {
+                    return NotFound();
+                }
+                
+                return project;
         }
         [HttpPost]
          public async Task<ActionResult<Project>> AddProject(Project project)
