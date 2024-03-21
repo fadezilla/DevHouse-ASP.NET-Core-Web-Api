@@ -1,35 +1,169 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/-PdIo4lB)
+### DevHouse C#/.net/MySQL Project
+## Description
 
-![](http://images.restapi.co.za/pvt/Noroff-64.png)
-# Noroff
-## Back-end Development Year 2
-### BET - Course Assignment 
+This is an ASP.NET Core Web API project developed for managing projects, developers, teams, and project types. It provides endpoints to perform CRUD (Create, Read, Update, Delete) operations on these entities in a MYSQL Database.
 
-Classroom repository for Noroff back-end development 2 - BET Course Assignment.
+## Setup Istructions
 
-Instruction for the course assignment is in the LMS (Moodle) system of Noroff.
-[https://lms.noroff.no](https://lms.noroff.no)
+To set up and run the ASP.NET Core Web API, Follow these steps:
 
-![](http://images.restapi.co.za/pvt/important_icon.png)
+1. Clone the reposity to your local machine:
+   git clone https://github.com/noroff-backend-2/aug23ft-bet-ca-1-fadezilla
 
-You will not be able to make any submission after the deadline of the course assignment. Make sure to make all your commit **BEFORE** the deadline
+2. Navigate to the project directory:
+   run the command "cd 'your-project-directory-name'" in the console.
 
-![](http://images.restapi.co.za/pvt/help_small.png)
+3. Install the required dependencies:
+   run the command "dotnet restore" in the console.
 
-If you are unsure of any instructions for the course assignment, contact out to your teacher on **Microsoft Teams**.
+4. Configure the database connection string in the `appsettings.json` file:
+   {
+   "ConnectionStrings": {
+   "DefaultConnection": ""server=localhost;database=YOUR-DATABASE;user=YOUR-USERNAME;password=YOUR-PASSWORD""
+   }
+   }
 
-**REMEMBER** Your Moodle LMS submission must have your repository link **AND** your Github username in the text file.
+5. Apply any database migratiosn:
+   run the command "dotnet ef database update" in the console.
 
----
+## Run the application
 
-#Application setup instructions
+To run the application, use the following command:
+"dotnet run"
+The API will start running on `http://localhost:port`.
 
-#Instructions to run the application
+## Creating Migrations
 
-#Instructions to create needed Migrations
+If you need to make any changes to the database schema, create a migration using the Entity Framework Core`s migrations feature.
+Run the following command to create a new migration:
+"dotnet ef migrations add YOUR-MIGRATION-NAME"
 
-#Connection String structure for MySQL Database connection
+then, apply the migration using:
+"dotnet ef database update"
 
-#Endpoint/s JSON requests
+## Connection String
 
-#Additional external libraries/packages used
+The connection string needed to connect to the MYSQL database is defined in the in the `appsettings.json` file under the `"ConnectionStrings"` section:
+{
+"ConnectionStrings": {
+"DefaultConnection": "your-connection-string"
+}
+}
+
+The connection string should looke like this: `"server=localhost;database=YOUR-DATABASE;user=YOUR-USERNAME;password=YOUR-PASSWORD"`.
+Swap out "YOUR-DATABASE", "YOUR-USERNAME", "YOUR-PASSWORD" with your own credentials.
+
+## Endpoint JSON Requests:
+
+# Add a Developer
+
+POST /api/Developer
+
+Example request body:
+{
+    "id": 0,
+    "firstName": "John",
+    "lastName": "Doe",
+    "roleId": 1,
+    "teamId": 2
+}
+
+# Update a Developer
+
+PUT /api/Developer/{Id}
+
+Example request body:
+{
+    "id": 2,
+    "firstName": "JohannaUpdatedExample",
+    "lastName": "DoeUpdatedExample",
+    "teamId": 2,
+    "roleId": 3
+}
+
+# Add a Project
+
+POST /api/Projects
+
+Example request body:
+{
+    "name": "ExampleProject",
+    "projectTypeId": 1,
+    "teamId": 1
+}
+
+# Update a Project
+
+PUT /api/Projects/{Id}
+
+Example request body:
+{
+    "id": 2,
+    "name": "ExampleProjectUpdated",
+    "projectTypeId": 1,
+    "teamId": 1
+}
+
+# Add a ProjectType
+
+POST /api/ProjectTypes
+
+Example request body:
+{
+    "name": "ProjectTypeExample"
+}
+
+# Update a ProjectType
+
+PUT /api/ProjectTypes/{Id}
+
+Example request body:
+{
+    "id": 2,
+    "name": "ProjectTypeUpdatedExample"
+}
+
+# Add a Role
+
+POST /api/Role
+
+Example request body:
+{
+    "name": "RoleExample"
+}
+
+# Update a Role
+
+PUT /api/Role/{Id}
+
+Example request body:
+{
+    "id": 2,
+    "name": "RoleUpdatedExample"
+}
+
+# Add a Team
+
+POST /api/Team
+
+Example request body:
+{
+    "name": "TeamExample"
+}
+
+# Update a Team
+
+PUT /api/Team/{Id}
+
+Example request body:
+{
+    "id": 3,
+    "name": "TeamUpdatedExample"
+}
+
+## External Libraries/packages Used:
+The project uses the following external libraries/packages:
+
+* Entity Framework Core for database operations
+* Microsoft.AspNetCore.Mvc for building RESTful APIs.
+* MySql.EntityFrameworkCore for MySQL database integration.
