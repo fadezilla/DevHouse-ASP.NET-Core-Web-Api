@@ -105,11 +105,17 @@ Example request body:
 PUT /api/Projects/{Id}
 
 Example request body:
+
 {
+
     "id": 2,
+
     "name": "ExampleProjectUpdated",
+
     "projectTypeId": 1,
+
     "teamId": 1
+
 }
 
 ### Add a ProjectType
@@ -117,6 +123,7 @@ Example request body:
 POST /api/ProjectTypes
 
 Example request body:
+
 {
     "name": "ProjectTypeExample"
 }
