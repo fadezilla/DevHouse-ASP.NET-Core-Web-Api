@@ -30,28 +30,35 @@ To set up and run the ASP.NET Core Web API, Follow these steps:
 ## Run the application
 
 To run the application, use the following command:
+
 "dotnet run"
+
 The API will start running on `http://localhost:port`.
 
 ## Creating Migrations
 
 If you need to make any changes to the database schema, create a migration using the Entity Framework Core`s migrations feature.
+
 Run the following command to create a new migration:
+
 "dotnet ef migrations add YOUR-MIGRATION-NAME"
 
 then, apply the migration using:
+
 "dotnet ef database update"
 
 ## Connection String
 
 The connection string needed to connect to the MYSQL database is defined in the in the `appsettings.json` file under the `"ConnectionStrings"` section:
+
 {
-"ConnectionStrings": {
-"DefaultConnection": "your-connection-string"
-}
+    "ConnectionStrings": {
+        "DefaultConnection": "your-connection-string"
+    }
 }
 
 The connection string should looke like this: `"server=localhost;database=YOUR-DATABASE;user=YOUR-USERNAME;password=YOUR-PASSWORD"`.
+
 Swap out "YOUR-DATABASE", "YOUR-USERNAME", "YOUR-PASSWORD" with your own credentials.
 
 ## Endpoint JSON Requests:
