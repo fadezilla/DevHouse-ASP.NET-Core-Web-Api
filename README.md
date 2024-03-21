@@ -1,9 +1,9 @@
-### DevHouse C#/.net/MySQL Project
+# DevHouse C#/.net/MySQL Project
 ## Description
 
 This is an ASP.NET Core Web API project developed for managing projects, developers, teams, and project types. It provides endpoints to perform CRUD (Create, Read, Update, Delete) operations on these entities in a MYSQL Database.
 
-## Setup Istructions
+## Setup Instructions
 
 To set up and run the ASP.NET Core Web API, Follow these steps:
 
@@ -17,6 +17,7 @@ To set up and run the ASP.NET Core Web API, Follow these steps:
    run the command "dotnet restore" in the console.
 
 4. Configure the database connection string in the `appsettings.json` file:
+
    {
    "ConnectionStrings": {
    "DefaultConnection": ""server=localhost;database=YOUR-DATABASE;user=YOUR-USERNAME;password=YOUR-PASSWORD""
@@ -55,7 +56,7 @@ Swap out "YOUR-DATABASE", "YOUR-USERNAME", "YOUR-PASSWORD" with your own credent
 
 ## Endpoint JSON Requests:
 
-# Add a Developer
+### Add a Developer
 
 POST /api/Developer
 
@@ -68,7 +69,7 @@ Example request body:
     "teamId": 2
 }
 
-# Update a Developer
+### Update a Developer
 
 PUT /api/Developer/{Id}
 
@@ -81,7 +82,7 @@ Example request body:
     "roleId": 3
 }
 
-# Add a Project
+### Add a Project
 
 POST /api/Projects
 
@@ -92,7 +93,7 @@ Example request body:
     "teamId": 1
 }
 
-# Update a Project
+### Update a Project
 
 PUT /api/Projects/{Id}
 
@@ -104,7 +105,7 @@ Example request body:
     "teamId": 1
 }
 
-# Add a ProjectType
+### Add a ProjectType
 
 POST /api/ProjectTypes
 
@@ -113,7 +114,7 @@ Example request body:
     "name": "ProjectTypeExample"
 }
 
-# Update a ProjectType
+### Update a ProjectType
 
 PUT /api/ProjectTypes/{Id}
 
@@ -123,7 +124,7 @@ Example request body:
     "name": "ProjectTypeUpdatedExample"
 }
 
-# Add a Role
+### Add a Role
 
 POST /api/Role
 
@@ -132,7 +133,7 @@ Example request body:
     "name": "RoleExample"
 }
 
-# Update a Role
+### Update a Role
 
 PUT /api/Role/{Id}
 
@@ -142,7 +143,7 @@ Example request body:
     "name": "RoleUpdatedExample"
 }
 
-# Add a Team
+### Add a Team
 
 POST /api/Team
 
@@ -151,7 +152,7 @@ Example request body:
     "name": "TeamExample"
 }
 
-# Update a Team
+### Update a Team
 
 PUT /api/Team/{Id}
 
