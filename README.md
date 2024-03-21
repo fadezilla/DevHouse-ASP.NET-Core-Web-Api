@@ -68,6 +68,7 @@ Swap out "YOUR-DATABASE", "YOUR-USERNAME", "YOUR-PASSWORD" with your own credent
 POST /api/Developer
 
 Example request body:
+```json
 {
     "id": 0,
     "firstName": "John",
@@ -75,12 +76,13 @@ Example request body:
     "roleId": 1,
     "teamId": 2
 }
-
+```
 ### Update a Developer
 
 PUT /api/Developer/{Id}
 
 Example request body:
+```json
 {
     "id": 2,
     "firstName": "JohannaUpdatedExample",
@@ -88,18 +90,19 @@ Example request body:
     "teamId": 2,
     "roleId": 3
 }
-
+```
 ### Add a Project
 
 POST /api/Projects
 
 Example request body:
+```json
 {
     "name": "ExampleProject",
     "projectTypeId": 1,
     "teamId": 1
 }
-
+```
 ### Update a Project
 
 PUT /api/Projects/{Id}
@@ -112,65 +115,70 @@ Example request body:
     "projectTypeId": 1,
     "teamId": 1
 }
-
+```
 ### Add a ProjectType
 
 POST /api/ProjectTypes
 
 Example request body:
-
+```json
 {
     "name": "ProjectTypeExample"
 }
-
+```
 ### Update a ProjectType
 
 PUT /api/ProjectTypes/{Id}
 
 Example request body:
+```json
 {
     "id": 2,
     "name": "ProjectTypeUpdatedExample"
 }
-
+```
 ### Add a Role
 
 POST /api/Role
 
 Example request body:
+```json
 {
     "name": "RoleExample"
 }
-
+```
 ### Update a Role
 
 PUT /api/Role/{Id}
 
 Example request body:
+```json
 {
     "id": 2,
     "name": "RoleUpdatedExample"
 }
-
+```
 ### Add a Team
 
 POST /api/Team
 
 Example request body:
+```json
 {
     "name": "TeamExample"
 }
-
+```
 ### Update a Team
 
 PUT /api/Team/{Id}
 
 Example request body:
+```json
 {
     "id": 3,
     "name": "TeamUpdatedExample"
 }
-
+```
 ## External Libraries/packages Used:
 The project uses the following external libraries/packages:
 
