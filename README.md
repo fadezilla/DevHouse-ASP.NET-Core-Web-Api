@@ -109,11 +109,8 @@ Example request body:
 {
 
     "id": 2,
-
     "name": "ExampleProjectUpdated",
-
     "projectTypeId": 1,
-
     "teamId": 1
 
 }
