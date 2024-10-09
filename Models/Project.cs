@@ -3,7 +3,7 @@ namespace devhouse.Models
     public class Project
     {
         public int Id { get; set; }
-        public string Name { get; set; }
+        public required string Name { get; set; }
 
         public int ProjectTypeId { get; set; }
         public ProjectType? ProjectType { get; set; }

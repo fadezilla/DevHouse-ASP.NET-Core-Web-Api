@@ -18,12 +18,12 @@ namespace devhouse.Controllers
         public class DeveloperTool
         {
             public int Id { get; set; }
-            public string FirstName { get; set; }
-            public string LastName { get; set; }
+            public required string FirstName { get; set; }
+            public required string LastName { get; set; }
             public int RoleId { get; set; }
             public int TeamId { get; set; }
-            public string Role { get; set; }
-            public string Team { get; set; }
+            public required string Role { get; set; }
+            public required string Team { get; set; }
         }
         
         [HttpGet]
@@ -38,9 +38,9 @@ namespace devhouse.Controllers
                     FirstName = p.FirstName,
                     LastName = p.LastName,
                     RoleId = p.RoleId,
-                    Role = p.Role.Name,
+                    Role = p.Role != null ? p.Role.Name :"No role",
                     TeamId = p.TeamId,
-                    Team = p.Team.Name
+                    Team = p.Team != null ? p.Team.Name : "No team"
                 }).ToListAsync();
 
             if(developer == null)
@@ -63,9 +63,9 @@ namespace devhouse.Controllers
                     FirstName = p.FirstName,
                     LastName = p.LastName,
                     RoleId = p.RoleId,
-                    Role = p.Role.Name,
+                    Role = p.Role != null ? p.Role.Name :"No role",
                     TeamId = p.TeamId,
-                    Team = p.Team.Name
+                    Team = p.Team != null ? p.Team.Name : "No team"
                 }).FirstOrDefaultAsync();
 
                 if(developer == null)

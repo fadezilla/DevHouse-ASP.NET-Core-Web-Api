@@ -17,14 +17,30 @@ namespace devhouse.Controllers
         }
         
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Team>>> GetTeams()
+        public async Task<ActionResult<IEnumerable<TeamDTO>>> GetTeams()
         {
-            if (_dataContext.Teams == null)
-            {
-                return NotFound();
-            }
+            var teams = await _dataContext.Teams
+                .Include(t => t.Developers!)
+                    .ThenInclude(d => d.Role)
+                .Select(t => new TeamDTO
+                {
+                    Id = t.Id,
+                    Name = t.Name,
+                    Developers = t.Developers!.Select(d => new DeveloperDTO
+                    {
+                        Id = d.Id,
+                        FirstName = d.FirstName,
+                        LastName = d.LastName,
+                        Role = d.Role != null ? d.Role.Name : "No role"
+                    }).ToList()
+                }).ToListAsync();
 
-            return await _dataContext.Teams.ToListAsync();
+                if (teams == null || !teams.Any())
+                {
+                    return NotFound();
+                }
+
+                return teams;
         }
 
         [HttpGet("{Id}")]
@@ -41,6 +57,7 @@ namespace devhouse.Controllers
             }
             return team;
         }
+        
         [HttpPost]
          public async Task<ActionResult<Team>> AddTeam(Team team)
         {

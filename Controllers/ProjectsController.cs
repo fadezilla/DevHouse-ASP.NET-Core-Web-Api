@@ -37,9 +37,9 @@ namespace devhouse.Controllers
                     Id = p.Id,
                     Name = p.Name,
                     ProjectTypeId = p.ProjectTypeId,
-                    ProjectType = p.ProjectType.Name,
+                    ProjectType = p.ProjectType != null ? p.ProjectType.Name : "No project type",
                     TeamId = p.TeamId,
-                    Team = p.Team.Name
+                    Team = p.Team != null ? p.Team.Name : "No team"
                 }).ToListAsync();
 
             if(project == null)
@@ -61,9 +61,9 @@ namespace devhouse.Controllers
                     Id = p.Id,
                     Name = p.Name,
                     ProjectTypeId = p.ProjectTypeId,
-                    ProjectType = p.ProjectType.Name,
+                    ProjectType = p.ProjectType != null ? p.ProjectType.Name : "No project type",
                     TeamId = p.TeamId,
-                    Team = p.Team.Name
+                    Team = p.Team != null ? p.Team.Name : "No team"
                 }).FirstOrDefaultAsync();
 
                 if(project == null)
